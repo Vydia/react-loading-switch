@@ -1,0 +1,41 @@
+{
+  "name": "react-loading-switch",
+  "version": "1.0.0",
+  "description": "React component API for easily composing the render logic surrounding react-apollo data fetching, loading and error handling",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vydia/react-loading-switch.git"
+  },
+  "keywords": [
+    "react",
+    "react-apollo",
+    "apollo",
+    "apollo-client",
+    "rendering",
+    "composable",
+    "component",
+    "data",
+    "loading",
+    "error",
+    "fetch",
+    "api",
+    "render",
+    "switch",
+    "logic",
+    "apollo-link"
+  ],
+  "author": "TSMMark",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vydia/react-loading-switch/issues"
+  },
+  "peerDependencies": {
+    "react": ">=16.0.0"
+  },
+  "homepage": "https://github.com/Vydia/react-loading-switch#readme"
+}
