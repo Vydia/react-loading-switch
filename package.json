@@ -1,19 +1,22 @@
 {
   "name": "react-loading-switch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component API for easily composing the render logic surrounding react-apollo data fetching, loading, and error handling",
+  "browser": "lib/index.js",
   "main": "lib/index.js",
   "module": "src/index.js",
+  "files": ["lib/"],
   "scripts": {
     "lint": "./node_modules/.bin/eslint src/.",
     "lint-fix": "npm run lint -- --fix",
     "flow-typed-install": "flow-typed install",
     "flow": "flow",
+    "prepublishOnly": "npm run ci-test && npm run build",
     "build": "npm run build:babel && npm run build:flow",
     "build:babel": "babel src/ -d lib",
     "build:flow": "flow-copy-source src lib",
-    "ci-test": "NODE_ENV=test npm run build && npm run flow && npm run jest",
-    "test": "NODE_ENV=test npm run build && npm run jest",
+    "ci-test": "npm run build && npm run lint && npm run flow && npm run jest",
+    "test": "npm run build && npm run jest",
     "jest": "jest --testMatch **/test/*.js --verbose",
     "test-update": "npm run test -- -u"
   },
@@ -83,6 +86,5 @@
     "regenerator-runtime": "^0.11.1"
   },
   "dependencies": {
-    "react": "^16.3.2"
   }
 }

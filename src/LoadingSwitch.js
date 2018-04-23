@@ -1,6 +1,5 @@
 // @flow
-import { Component } from 'react'
-import { type Node } from 'react'
+import { Component, type Node } from 'react'
 import isPending, { type PendingValue } from './utils/isPending'
 
 /*
@@ -43,7 +42,7 @@ export type Props = {|
 
 class LoadingSwitch extends Component<Props> {
   render() {
-    let {
+    const {
       children,
       error,
       errorWhenMissing,
