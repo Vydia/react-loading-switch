@@ -12,7 +12,8 @@
     "semi": [2, "never"],
     "no-unexpected-multiline": 2,
     "compat/compat": 2,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "flowtype/require-valid-file-annotation": 2
   },
   "env": {
     "jest": true
