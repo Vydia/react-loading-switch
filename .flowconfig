@@ -1,0 +1,13 @@
+[ignore]
+<PROJECT_ROOT>/src
+
+[include]
+
+[libs]
+<PROJECT_ROOT>/types/index.js
+
+[lints]
+
+[options]
+
+[strict]

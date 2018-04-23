@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders \`children()\` when \`require\` is truthy 1`] = `"Children"`;
+
+exports[`renders \`renderError(error))\` when both \`error\` and \`errorWhenMissing\` are provided 1`] = `"Error: \`error\`: Test message"`;
+
+exports[`renders \`renderError(error)\` when \`error\` is provided 1`] = `"Error: \`error\`: Test message"`;
+
+exports[`renders \`renderError(errorWhenMissing())\` when \`loading\` is false but \`require\` is still falsey 1`] = `"Error: \`errorWhenMissing\`: Test message"`;
+
+exports[`renders \`renderLoading()\` when \`loading\` is true and \`require\` is 0 1`] = `"Loading"`;
+
+exports[`renders \`renderLoading()\` when \`loading\` is true and \`require\` is false 1`] = `"Loading"`;
+
+exports[`renders \`renderLoading()\` when \`loading\` is true and \`require\` is undefined 1`] = `"Loading"`;

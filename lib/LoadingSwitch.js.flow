@@ -1,5 +1,7 @@
-
-import { Component, type Node } from 'react'
+// @flow
+import { Component } from 'react'
+import { type Node } from 'react'
+import isPending, { type PendingValue } from './utils/isPending'
 
 /*
 LoadingSwitch
@@ -27,14 +29,7 @@ between our mobile and web apps, and also really any app that uses react-apollo
       ) }
     </LoadingSwitch>
   }
-
 */
-
-export type PendingValue = any
-
-// TODO: Import
-// Isolated in case we want to modify this behavior in the future.
-export const isPending: (PendingValue) => boolean = (pendingValue) => !pendingValue
 
 export type Props = {|
   children: ?Node | ?() => ?Node,
@@ -47,9 +42,7 @@ export type Props = {|
 |}
 
 class LoadingSwitch extends Component<Props> {
-  static displayName = 'LoadingSwitch'
-
-  render = () => {
+  render() {
     let {
       children,
       error,
@@ -75,5 +68,6 @@ class LoadingSwitch extends Component<Props> {
     return children && typeof children === 'function' ? children() : children
   }
 }
+LoadingSwitch.displayName = 'LoadingSwitch'
 
-export default LoadingSwitch
+module.exports = LoadingSwitch
