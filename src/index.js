@@ -1,2 +1,8 @@
+import LoadingSwitch, { type Props as _Props } from './LoadingSwitch'
+
+export type Props = _Props
+
+export default LoadingSwitch
+
 export * from './LoadingSwitch'
-export * from './utils'
+export { isPending } from './utils'
