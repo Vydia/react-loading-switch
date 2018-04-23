@@ -17,18 +17,20 @@ Example
 render() {
   const { loading, error, media, artist } = this.props.data
 
-  <LoadingSwitch
-    error={error}
-    errorWhenMissing={() => new Error('Missing required data!')}
-    loading={loading}
-    renderError={(error) => <DataError error={error} />}
-    renderLoading={() => <Loading />}
-    require={media && artist}
-  >
-    { () => (
-      <Text>This is rendered when have the data! { media.id }</Text>
-    ) }
-  </LoadingSwitch>
+  return (
+    <LoadingSwitch
+      error={error}
+      errorWhenMissing={() => new Error('Missing required data!')}
+      loading={loading}
+      renderError={(error) => <DataError error={error} />}
+      renderLoading={() => <Loading />}
+      require={media && artist}
+    >
+      { () => (
+        <Text>This is rendered when have the data! { media.id }</Text>
+      ) }
+    </LoadingSwitch>
+  )
 }
 ```
 
