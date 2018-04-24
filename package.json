@@ -1,6 +1,6 @@
 {
   "name": "react-loading-switch",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React component API for easily composing the render logic surrounding react-apollo data fetching, loading, and error handling",
   "browser": "lib/index.js",
   "main": "lib/index.js",
