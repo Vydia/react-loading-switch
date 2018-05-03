@@ -124,7 +124,7 @@ const PuppyBirthday = ({ puppyId }) => (
         require={puppy}
       >
         { () => (
-          <View>{ `${name}'s birthday is ${puppy.birthday}!` }</View>
+          <View>{ `${puppy.name}'s birthday is ${puppy.birthday}!` }</View>
         ) }
       </LoadingSwitch>
     )}
