@@ -124,7 +124,7 @@ const PuppyBirthday = ({ puppyId }) => (
 
 #### Require multiple things! It uses JavaScript's truthy/falsey checking.
 
-*Remember falsey in JavaScript: `false || null || undefined || 0 || '' || NaN` * :neckbeard:
+*Remember falsey in JavaScript: `false || null || undefined || 0 || '' || NaN`* :neckbeard:
 
 ```js
 const Puppy = ({ loading, error, someData, moreData }) => (
