@@ -20,9 +20,7 @@ In our experience, re-writing identical or similar logic in every component is b
 #### This sucks 👎
 
 ```js
-render = () => {
-  const { loading, error, puppy } = this.props.data
-
+const Puppy = ({ loading, error, puppy }) => {
   if (error) {
     return <RenderError error={error} />
   }
@@ -54,24 +52,20 @@ render = () => {
 ```js
 import LoadingSwitch from 'react-loading-switch'
 
-render() {
-  const { loading, error, puppy } = this.props.data
-
-  return (
-    <LoadingSwitch
-      error={error}
-      errorWhenMissing={() => new Error('Missing puppy data!')}
-      loading={loading}
-      renderError={(error) => <DataError error={error} />}
-      renderLoading={() => <Loading />}
-      require={puppy}
-    >
-      { () => (
-        <View>{ `The puppy data is here! ${puppy.id}` }</View>
-      ) }
-    </LoadingSwitch>
-  )
-}
+const Puppy = ({ loading, error, puppy }) => (
+  <LoadingSwitch
+    error={error}
+    errorWhenMissing={() => new Error('Missing puppy data!')}
+    loading={loading}
+    renderError={(error) => <DataError error={error} />}
+    renderLoading={() => <Loading />}
+    require={puppy}
+  >
+    { () => (
+      <View>{ `The puppy data is here! ${puppy.id}` }</View>
+    ) }
+  </LoadingSwitch>
+)
 ```
 
 #### DRY it up by wrapping with some default props 🎉
@@ -79,21 +73,17 @@ render() {
 ```js
 import MyLoadingSwitch from '../MyLoadingSwitch'
 
-render() {
-  const { loading, error, puppy } = this.props.data
-
-  return (
-    <MyLoadingSwitch
-      error={error}
-      loading={loading}
-      require={puppy}
-    >
-      { () => (
-        <View>{ `The puppy data is here! ${puppy.id}` }</View>
-      ) }
-    </MyLoadingSwitch>
-  )
-}
+const Puppy = ({ loading, error, puppy }) => (
+  <MyLoadingSwitch
+    error={error}
+    loading={loading}
+    require={puppy}
+  >
+    { () => (
+      <View>{ `The puppy data is here! ${puppy.id}` }</View>
+    ) }
+  </MyLoadingSwitch>
+)
 ```
 
 #### With React-Apollo's shiny new `<Query />` components :godmode:
@@ -137,21 +127,17 @@ const PuppyBirthday = ({ puppyId }) => (
 *Remember falsey in JavaScript: `false || null || undefined || 0 || '' || NaN` * :neckbeard:
 
 ```js
-render() {
-  const { loading, error, someData, moreData } = this.props.data
-
-  return (
-    <MyLoadingSwitch
-      error={error}
-      loading={loading}
-      require={someData && moreData && moreData.hasTheRequiredThing}
-    >
-      { () => (
-        <View>{ moreData.hasTheRequiredThing }</View>
-      ) }
-    </MyLoadingSwitch>
-  )
-}
+const Puppy = ({ loading, error, someData, moreData }) => (
+  <MyLoadingSwitch
+    error={error}
+    loading={loading}
+    require={someData && moreData && moreData.hasTheRequiredThing}
+  >
+    { () => (
+      <View>{ moreData.hasTheRequiredThing }</View>
+    ) }
+  </MyLoadingSwitch>
+)
 ```
 
 Getting Started
