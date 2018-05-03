@@ -1,8 +1,19 @@
 {
-  "plugins": ["syntax-flow", "transform-class-properties", "transform-flow-strip-types", "transform-es2015-modules-commonjs"],
-  "presets": [["env", {
-    "targets": {
-      "node": "current"
-    }
-  }], "flow", "stage-3", "react"]
+  "plugins": [
+    "syntax-flow",
+    "transform-class-properties",
+    "transform-flow-strip-types",
+    "transform-es2015-modules-commonjs"
+  ],
+  "presets": [
+    "es2015",
+    ["env", {
+      "targets": {
+        "node": "current"
+      }
+    }],
+    "flow",
+    "stage-3",
+    "react"
+  ]
 }
