@@ -1,6 +1,11 @@
 // @flow
-import { Component, type Node } from 'react'
-import isPending, { type PendingValue } from './utils/isPending'
+import { type Node } from 'react'
+// import {
+//   compose,
+//   defaultProps,
+//   withProps,
+//   type HOC,
+// } from 'recompose'
 
 /*
 LoadingSwitch
@@ -8,65 +13,61 @@ LoadingSwitch
 
 A switcher based on the presence of data and apollo loading information.
 
-Note: This component is generic enough that it should be its own package shared
-between our mobile and web apps, and also really any app that uses react-apollo
-
 @example
-  render() {
-    const { loading, error, media, artist } = this.props.data
+  import LoadingSwitch from 'react-loading-switch'
 
+  const Puppy = ({ loading, error, puppy }) => (
     <LoadingSwitch
       error={error}
-      errorWhenMissing={() => new Error('Missing required data!')}
+      errorWhenMissing={() => new Error('Missing puppy data!')}
       loading={loading}
       renderError={(error) => <DataError error={error} />}
       renderLoading={() => <Loading />}
-      require={media && artist}
+      require={puppy}
     >
       { () => (
-        <Text>This is rendered when have the data! { media.id }</Text>
+        <View>{ `The puppy data is here! ${puppy.id}` }</View>
       ) }
     </LoadingSwitch>
-  }
+  )
 */
 
-export type Props = {|
-  children: ?Node | ?() => ?Node,
-  error: ?Error,
-  errorWhenMissing: Error | () => Error,
+export type LoadingSwitchProps<RequireType> = {
+  error?: ?Error,
+  errorWhenMissing: () => Error,
   loading: boolean,
   renderError: (Error) => ?Node,
   renderLoading: () => ?Node,
-  require: PendingValue,
-|}
+  require: RequireType,
+  children: (RequireType) => ?Node,
+}
 
-class LoadingSwitch extends Component<Props> {
-  render() {
-    const {
-      children,
-      error,
-      errorWhenMissing,
-      loading,
-      renderError,
-      renderLoading,
-      require,
-    } = this.props
-
-    if (error) {
-      return renderError(error)
-    }
-
-    if (isPending(require)) {
-      if (loading) {
-        return renderLoading()
-      }
-
-      return renderError(errorWhenMissing && typeof errorWhenMissing === 'function' ? errorWhenMissing() : errorWhenMissing)
-    }
-
-    return children && typeof children === 'function' ? children() : children
+const LoadingSwitch = ({
+  children,
+  error,
+  errorWhenMissing,
+  loading,
+  renderError,
+  renderLoading,
+  require,
+}: LoadingSwitchProps<*>) => {
+  if (error) {
+    return renderError(error)
   }
+
+  // TODO: invariant(/* ... */) if `require` is a function.
+  if (!require) {
+    if (loading) {
+      return renderLoading()
+    }
+
+    if (errorWhenMissing) {
+      return renderError(typeof errorWhenMissing === 'function' ? errorWhenMissing() : errorWhenMissing)
+    }
+  }
+
+  return children(require)
 }
 LoadingSwitch.displayName = 'LoadingSwitch'
 
-module.exports = LoadingSwitch
+export default LoadingSwitch

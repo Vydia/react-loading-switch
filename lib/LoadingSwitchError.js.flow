@@ -1,0 +1,4 @@
+// @flow
+export class LoadingSwitchError extends Error {}
+
+export default LoadingSwitchError
