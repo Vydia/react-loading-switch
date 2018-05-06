@@ -9,18 +9,19 @@
     "lib/"
   ],
   "scripts": {
-    "lint": "./node_modules/.bin/eslint src/.",
-    "lint-fix": "npm run lint -- --fix",
-    "flow-typed-install": "flow-typed install",
-    "flow": "flow",
-    "prepublishOnly": "npm run ci-test && npm run build",
-    "build": "npm run build:babel && npm run build:flow",
     "build:babel": "babel src/ -d lib",
     "build:flow": "flow-copy-source src lib",
+    "build:clean": "rm -rf lib",
+    "build": "npm run build:babel && npm run build:flow",
     "ci-test": "npm run build && npm run lint && npm run flow && npm run jest",
-    "test": "npm run build && npm run jest",
+    "flow-typed-install": "flow-typed install",
+    "flow": "flow",
     "jest": "jest --testMatch **/test/*.js --verbose",
-    "test-update": "npm run test -- -u"
+    "lint-fix": "npm run lint -- --fix",
+    "lint": "./node_modules/.bin/eslint src/.",
+    "prepublishOnly": "npm run ci-test && npm run build",
+    "test-update": "npm run jest -- -u",
+    "test": "npm run jest"
   },
   "repository": {
     "type": "git",
@@ -81,10 +82,11 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "flow-bin": "^0.70.0",
+    "flow-bin": "^0.71.0",
     "flow-copy-source": "^1.3.0",
     "flow-typed": "^2.4.0",
     "jest": "^22.4.3",
+    "lodash": "^4.17.10",
     "react-test-renderer": "^16.3.2",
     "regenerator-runtime": "^0.11.1"
   },

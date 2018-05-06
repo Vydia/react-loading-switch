@@ -1,14 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders \`children()\` when \`require\` is truthy 1`] = `"Children"`;
+exports[`can wrap with default props and they get used 1`] = `
+Array [
+  "Default renderLoading",
+  "Default renderLoading",
+]
+`;
+
+exports[`can wrap with default props with different require type signatures 1`] = `
+Array [
+  "foo",
+  "bar",
+]
+`;
+
+exports[`renders \`children(require)\` when \`require\` is a plain object 1`] = `"bar"`;
+
+exports[`renders \`children(require)\` when \`require\` is a truthy string 1`] = `"whatever"`;
+
+exports[`renders \`renderError() with default \`errorWhenMissing\` when \`loading\` is false but \`require\` is still falsey 1`] = `"Error: \`errorWhenMissing\`: Test message"`;
 
 exports[`renders \`renderError(error))\` when both \`error\` and \`errorWhenMissing\` are provided 1`] = `"Error: \`error\`: Test message"`;
 
 exports[`renders \`renderError(error)\` when \`error\` is provided 1`] = `"Error: \`error\`: Test message"`;
 
-exports[`renders \`renderError(errorWhenMissing())\` when \`loading\` is false but \`require\` is still falsey 1`] = `"Error: \`errorWhenMissing\`: Test message"`;
+exports[`renders \`renderError(errorWhenMissing())\` when \`loading\` is false but \`require\` is still falsey and \`errorWhenMissing\` is provided 1`] = `"Error: \`errorWhenMissing\`: Test message"`;
 
 exports[`renders \`renderLoading()\` when \`loading\` is true and \`require\` is 0 1`] = `"Loading"`;
+
+exports[`renders \`renderLoading()\` when \`loading\` is true and \`require\` is a falsey string 1`] = `"Loading"`;
 
 exports[`renders \`renderLoading()\` when \`loading\` is true and \`require\` is false 1`] = `"Loading"`;
 
