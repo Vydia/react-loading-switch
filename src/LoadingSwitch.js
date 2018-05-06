@@ -26,7 +26,7 @@ A switcher based on the presence of data and apollo loading information.
   )
 */
 
-export type LoadingSwitchProps<RequireType> = {
+export type LoadingSwitchProps<RequireType> = {|
   error?: ?Error,
   errorWhenMissing: () => Error,
   loading: boolean,
@@ -34,9 +34,11 @@ export type LoadingSwitchProps<RequireType> = {
   renderLoading: () => ?Node,
   require: RequireType,
   children: (RequireType) => ?Node,
-}
+|}
 
-const LoadingSwitch = ({
+export type Props = LoadingSwitchProps<*>
+
+function LoadingSwitch({
   children,
   error,
   errorWhenMissing,
@@ -44,7 +46,7 @@ const LoadingSwitch = ({
   renderError,
   renderLoading,
   require,
-}: LoadingSwitchProps<*>) => {
+}: Props): ?Node {
   if (error) {
     return renderError(error)
   }

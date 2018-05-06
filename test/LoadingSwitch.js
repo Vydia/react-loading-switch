@@ -33,165 +33,148 @@ const snapshotTest: ({|
 forEach([
   {
     description: 'renders `children(require)` when `require` is a truthy string',
-    component: () =>
-      (
-        <LoadingSwitch
-          errorWhenMissing={errorWhenMissing}
-          loading={loading}
-          renderError={renderError}
-          renderLoading={renderLoading}
-          require="whatever"
-        >
-          {children}
-        </LoadingSwitch>
-      )
-    ,
+    component: () => (
+      <LoadingSwitch
+        errorWhenMissing={errorWhenMissing}
+        loading={loading}
+        renderError={renderError}
+        renderLoading={renderLoading}
+        require="whatever"
+      >
+        {children}
+      </LoadingSwitch>
+    ),
   },
   {
     description: 'renders `children(require)` when `require` is a plain object',
-    component: () =>
-      (
+    component: () => {
+      const require = { foo: 'bar' }
+      return (
         <LoadingSwitch
           errorWhenMissing={errorWhenMissing}
-          loading={loading}
-          renderError={renderError}
-          renderLoading={renderLoading}
-          require={{ foo: 'bar' }}
-        >
-          {({ foo }) => foo}
-        </LoadingSwitch>
-      )
-    ,
-  },
-  {
-    description: 'renders `renderLoading()` when `loading` is true and `require` is undefined',
-    component: () =>
-      (
-        <LoadingSwitch
-          errorWhenMissing={errorWhenMissing}
-          loading={loading}
-          renderError={renderError}
-          renderLoading={renderLoading}
-          require={undefined}
-        >
-          {children}
-        </LoadingSwitch>
-      )
-    ,
-  },
-  {
-    description: 'renders `renderLoading()` when `loading` is true and `require` is a falsey string',
-    component: () =>
-      (
-        <LoadingSwitch
-          errorWhenMissing={errorWhenMissing}
-          loading={loading}
-          renderError={renderError}
-          renderLoading={renderLoading}
-          require=""
-        >
-          {children}
-        </LoadingSwitch>
-      )
-    ,
-  },
-  {
-    description: 'renders `renderLoading()` when `loading` is true and `require` is false',
-    component: () =>
-      (
-        <LoadingSwitch
-          errorWhenMissing={errorWhenMissing}
-          loading={loading}
-          renderError={renderError}
-          renderLoading={renderLoading}
-          require={false}
-        >
-          {children}
-        </LoadingSwitch>
-      )
-    ,
-  },
-  {
-    description: 'renders `renderLoading()` when `loading` is true and `require` is 0',
-    component: () =>
-      (
-        <LoadingSwitch
-          errorWhenMissing={errorWhenMissing}
-          loading={loading}
-          renderError={renderError}
-          renderLoading={renderLoading}
-          require={0}
-        >
-          {children}
-        </LoadingSwitch>
-      )
-    ,
-  },
-  {
-    description: 'renders `renderError(error)` when `error` is provided',
-    component: () =>
-      (
-        <LoadingSwitch
-          errorWhenMissing={errorWhenMissing}
-          error={error}
           loading={loading}
           renderError={renderError}
           renderLoading={renderLoading}
           require={require}
         >
-          {children}
+          {({ foo }: typeof require) => foo}
         </LoadingSwitch>
       )
-    ,
+    },
+  },
+  {
+    description: 'renders `renderLoading()` when `loading` is true and `require` is undefined',
+    component: () => (
+      <LoadingSwitch
+        errorWhenMissing={errorWhenMissing}
+        loading={loading}
+        renderError={renderError}
+        renderLoading={renderLoading}
+        require={undefined}
+      >
+        {children}
+      </LoadingSwitch>
+    ),
+  },
+  {
+    description: 'renders `renderLoading()` when `loading` is true and `require` is a falsey string',
+    component: () => (
+      <LoadingSwitch
+        errorWhenMissing={errorWhenMissing}
+        loading={loading}
+        renderError={renderError}
+        renderLoading={renderLoading}
+        require=""
+      >
+        {children}
+      </LoadingSwitch>
+    ),
+  },
+  {
+    description: 'renders `renderLoading()` when `loading` is true and `require` is false',
+    component: () => (
+      <LoadingSwitch
+        errorWhenMissing={errorWhenMissing}
+        loading={loading}
+        renderError={renderError}
+        renderLoading={renderLoading}
+        require={false}
+      >
+        {children}
+      </LoadingSwitch>
+    ),
+  },
+  {
+    description: 'renders `renderLoading()` when `loading` is true and `require` is 0',
+    component: () => (
+      <LoadingSwitch
+        errorWhenMissing={errorWhenMissing}
+        loading={loading}
+        renderError={renderError}
+        renderLoading={renderLoading}
+        require={0}
+      >
+        {children}
+      </LoadingSwitch>
+    ),
+  },
+  {
+    description: 'renders `renderError(error)` when `error` is provided',
+    component: () => (
+      <LoadingSwitch
+        errorWhenMissing={errorWhenMissing}
+        error={error}
+        loading={loading}
+        renderError={renderError}
+        renderLoading={renderLoading}
+        require={require}
+      >
+        {children}
+      </LoadingSwitch>
+    ),
   },
   {
     description: 'renders `renderError() with default `errorWhenMissing` when `loading` is false but `require` is still falsey',
-    component: () =>
-      (
-        <LoadingSwitch
-          errorWhenMissing={errorWhenMissing}
-          loading={false}
-          renderError={renderError}
-          renderLoading={renderLoading}
-          require={undefined}
-        >
-          {children}
-        </LoadingSwitch>
-      )
-    ,
+    component: () => (
+      <LoadingSwitch
+        errorWhenMissing={errorWhenMissing}
+        loading={false}
+        renderError={renderError}
+        renderLoading={renderLoading}
+        require={undefined}
+      >
+        {children}
+      </LoadingSwitch>
+    ),
   },
   {
     description: 'renders `renderError(errorWhenMissing())` when `loading` is false but `require` is still falsey and `errorWhenMissing` is provided',
-    component: () =>
-      (
-        <LoadingSwitch
-          errorWhenMissing={errorWhenMissing}
-          loading={false}
-          renderError={renderError}
-          renderLoading={renderLoading}
-          require={undefined}
-        >
-          {children}
-        </LoadingSwitch>
-      )
-    ,
+    component: () => (
+      <LoadingSwitch
+        errorWhenMissing={errorWhenMissing}
+        loading={false}
+        renderError={renderError}
+        renderLoading={renderLoading}
+        require={undefined}
+      >
+        {children}
+      </LoadingSwitch>
+    ),
   },
   {
     description: 'renders `renderError(error))` when both `error` and `errorWhenMissing` are provided',
-    component: () =>
-      (
-        <LoadingSwitch
-          error={error}
-          errorWhenMissing={errorWhenMissing}
-          loading={false}
-          renderError={renderError}
-          renderLoading={renderLoading}
-          require={undefined}
-        >
-          {children}
-        </LoadingSwitch>
-      )
-    ,
+    component: () => (
+      <LoadingSwitch
+        error={error}
+        errorWhenMissing={errorWhenMissing}
+        loading={false}
+        renderError={renderError}
+        renderLoading={renderLoading}
+        require={undefined}
+      >
+        {children}
+      </LoadingSwitch>
+    ),
   },
   {
     description: 'can wrap with default props with different require type signatures',
@@ -199,9 +182,12 @@ forEach([
       const DefaultLoadingSwitch = props => (
         <LoadingSwitch
           renderLoading={() => 'Default renderLoading'}
-          {...props}
+          {...Object.freeze(props)}
         />
       )
+
+      const ls1Require = 'foo'
+      const ls2Require = { foo: 'bar' }
 
       return (
         <Fragment>
@@ -209,7 +195,7 @@ forEach([
             errorWhenMissing={errorWhenMissing}
             loading={false}
             renderError={renderError}
-            require="foo"
+            require={ls1Require}
           >
             {children}
           </DefaultLoadingSwitch>
@@ -217,9 +203,9 @@ forEach([
             errorWhenMissing={errorWhenMissing}
             loading={false}
             renderError={renderError}
-            require={{ foo: 'bar' }}
+            require={ls2Require}
           >
-            {({ foo }) => foo}
+            {({ foo }: typeof ls2Require) => foo}
           </DefaultLoadingSwitch>
         </Fragment>
       )
@@ -231,7 +217,7 @@ forEach([
       const DefaultLoadingSwitch = props => (
         <LoadingSwitch
           renderLoading={() => 'Default renderLoading'}
-          {...props}
+          {...Object.freeze(props)}
         />
       )
 
@@ -251,7 +237,7 @@ forEach([
             renderError={renderError}
             require=""
           >
-            {({ foo }) => foo}
+            {children}
           </DefaultLoadingSwitch>
         </Fragment>
       )
